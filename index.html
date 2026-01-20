@@ -4,109 +4,109 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Фотограф Леус Андрей</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; margin:0; padding:0; }
+* { box-sizing:border-box; margin:0; padding:0; }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    scroll-behavior: smooth;
+  font-family:'Montserrat', sans-serif;
+  background:#f5f5f5;
+  color:#222;
+  scroll-behavior:smooth;
 }
 
 /* BUTTONS */
 #musicBtn, #adminBtn {
-    position: fixed;
-    bottom: 20px;
-    padding: 12px 18px;
-    border-radius: 30px;
-    border: none;
-    font-size: 14px;
-    cursor: pointer;
-    z-index: 200;
+  position:fixed;
+  bottom:20px;
+  padding:12px 18px;
+  border-radius:30px;
+  border:none;
+  font-size:14px;
+  cursor:pointer;
+  z-index:200;
 }
-
 #musicBtn { left:20px; background:#222; color:#fff; }
 #adminBtn { right:20px; background:#ff512f; color:#fff; }
 
 /* HEADER */
 header {
-    height: 100vh;
-    background: linear-gradient(135deg,#ff512f,#dd2476);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color:#fff;
-    padding:20px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
 }
-header h1 { font-size:3.5em; margin-bottom:10px; }
-header p { font-size:1.3em; opacity:0.9; }
+header h1 { font-size:3em; margin-bottom:10px; }
+header p { font-size:1.2em; color:#555; }
 
 /* NAV */
 nav {
-    position: sticky;
-    top:0;
-    background:#000;
-    display:flex;
-    justify-content:center;
-    z-index:100;
+  position:sticky;
+  top:0;
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  box-shadow:0 2px 5px rgba(0,0,0,0.05);
+  z-index:100;
 }
 nav a {
-    color:#fff;
-    padding:15px 22px;
-    text-decoration:none;
-    transition:.3s;
+  color:#222;
+  padding:15px 22px;
+  text-decoration:none;
+  transition:.3s;
+  font-weight:500;
 }
-nav a:hover { background:#ff512f; }
+nav a:hover { color:#ff512f; }
 
 /* SECTIONS */
 section {
-    padding:80px 20px;
-    max-width:1100px;
-    margin:auto;
-    transition: all .6s ease;
-    opacity:0;
-    transform: translateY(50px);
+  padding:60px 20px;
+  max-width:1000px;
+  margin:auto;
+  background:#fff;
+  border-radius:12px;
+  margin-bottom:40px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.05);
+  opacity:0;
+  transform:translateY(50px);
+  transition:all .6s ease;
 }
-section.visible { opacity:1; transform: translateY(0); }
-h2 { text-align:center; margin-bottom:50px; font-size:2.4em; color:#ff512f; }
+section.visible { opacity:1; transform:translateY(0); }
 
-/* О СЕБЕ */
-#about { background: linear-gradient(120deg,#ffe259,#ffa751); color:#000; border-radius:15px; }
-#about p { font-size:1.2em; text-align:center; line-height:1.7; }
+h2 { text-align:center; margin-bottom:40px; font-size:2.2em; color:#ff512f; }
+
+/* ABOUT */
+#about p { font-size:1.15em; line-height:1.7; text-align:center; color:#333; }
 
 /* PORTFOLIO */
-#portfolio { background:#111; color:#fff; border-radius:15px; }
-.portfolio { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
-.card { position:relative; border-radius:15px; overflow:hidden; }
-.card img { width:100%; height:320px; object-fit:cover; transition:.5s; }
-.card:hover img { transform:scale(1.1); }
-.card span { position:absolute; bottom:0; left:0; right:0; padding:12px; background:rgba(0,0,0,0.7); text-align:center; }
+.portfolio { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+.card { position:relative; border-radius:12px; overflow:hidden; background:#fff; box-shadow:0 3px 8px rgba(0,0,0,0.08); transition:.3s; }
+.card img { width:100%; height:300px; object-fit:cover; transition:.4s; }
+.card:hover img { transform:scale(1.05); }
+.card span { position:absolute; bottom:0; left:0; right:0; padding:12px; background:rgba(255,255,255,0.9); text-align:center; color:#222; font-weight:500; }
 
 /* PRICES */
-#prices { background: #1b1b1b; color:#fff; border-radius:15px; }
-.price { padding:25px; margin-bottom:20px; background:#2b2b2b; border-radius:15px; text-align:center; }
+.price { padding:25px; margin-bottom:20px; border-radius:12px; background:#f9f9f9; text-align:center; border:1px solid #eee; }
 .price h3 { color:#ff512f; margin-bottom:8px; }
 
 /* REVIEWS */
-#reviews { background: linear-gradient(120deg,#00c6ff,#0072ff); color:#fff; border-radius:15px; }
-.review { background:rgba(0,0,0,0.3); padding:20px; border-radius:15px; margin-bottom:15px; }
-#reviewForm { margin-top:30px; text-align:center; }
-#reviewForm input, #reviewForm textarea { padding:8px; width:250px; margin-bottom:8px; border-radius:5px; border:none; }
+.review { padding:20px; border-radius:12px; margin-bottom:15px; background:#f9f9f9; border:1px solid #eee; }
+#reviewForm { margin-top:20px; text-align:center; }
+#reviewForm input, #reviewForm textarea { padding:8px; width:250px; margin-bottom:8px; border-radius:5px; border:1px solid #ccc; }
 #reviewForm button { padding:10px 15px; background:#ff512f; color:#fff; border:none; border-radius:20px; cursor:pointer; }
 
 /* CONTACTS */
-#contacts { background:#f0f0f0; color:#000; border-radius:15px; }
 #contacts p { text-align:center; font-size:1.1em; margin-bottom:10px; }
 .socials { display:flex; justify-content:center; gap:20px; margin-top:20px; }
-.socials img { width:42px; transition:.3s; }
+.socials img { width:40px; transition:.3s; }
 .socials img:hover { transform:scale(1.2); }
 
 /* FOOTER */
-footer { background:#000; text-align:center; padding:30px; margin-top:60px; color:#fff; }
+footer { background:#fff; text-align:center; padding:20px; margin-top:40px; color:#555; font-size:0.95em; }
 </style>
 </head>
 
@@ -116,29 +116,28 @@ footer { background:#000; text-align:center; padding:30px; margin-top:60px; colo
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mp3">
 </audio>
-
 <button id="musicBtn">🎵 Включить музыку</button>
 <button id="adminBtn">🔐 Админка</button>
 
 <header>
-<h1>Леус Андрей</h1>
-<p>18 лет опыта • Экшн-фотография • Взрывы — мой стиль</p>
+  <h1>Леус Андрей</h1>
+  <p>18 лет опыта • Экшн-фотография • Взрывы — мой стиль</p>
 </header>
 
 <nav>
-<a href="#about">Обо мне</a>
-<a href="#portfolio">Портфолио</a>
-<a href="#prices">Цены</a>
-<a href="#reviews">Отзывы</a>
-<a href="#contacts">Контакты</a>
+  <a href="#about">Обо мне</a>
+  <a href="#portfolio">Портфолио</a>
+  <a href="#prices">Цены</a>
+  <a href="#reviews">Отзывы</a>
+  <a href="#contacts">Контакты</a>
 </nav>
 
 <section id="about">
 <h2>О фотографе</h2>
 <p>
 Меня зовут Леус Андрей. Я профессиональный фотограф с 18-летним опытом.
-Моя специализация — экшн-фотография, динамика, адреналин и кадры
-на фоне взрывов. Я создаю изображения, которые невозможно забыть.
+Моя специализация — экшн-фотография, динамика, адреналин и кадры на фоне взрывов. 
+Я создаю изображения, которые невозможно забыть.
 Мой девиз: И на груди его могучей, три волоса казались кучей!
 Если ты это видишь — меня съел какашечный монстр!
 </p>
@@ -162,7 +161,6 @@ footer { background:#000; text-align:center; padding:30px; margin-top:60px; colo
 <section id="reviews">
 <h2>Отзывы</h2>
 <div id="reviewList"></div>
-
 <div id="reviewForm">
 <input type="text" id="reviewName" placeholder="Ваше имя"><br>
 <textarea id="reviewText" placeholder="Ваш отзыв" rows="3"></textarea><br>
@@ -189,7 +187,7 @@ footer { background:#000; text-align:center; padding:30px; margin-top:60px; colo
 // === MUSIC ===
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
-musicBtn.onclick = () => {
+musicBtn.onclick = ()=>{
   if(music.paused){music.volume=0.25; music.play(); musicBtn.textContent="🔇 Выключить музыку";}
   else{music.pause(); musicBtn.textContent="🎵 Включить музыку";}
 };
@@ -233,7 +231,6 @@ function renderReviews(){
     reviewList.appendChild(div);
   });
 }
-
 submitReview.onclick=()=>{
   const name=reviewName.value.trim();
   const text=reviewText.value.trim();
@@ -244,7 +241,6 @@ submitReview.onclick=()=>{
   reviewName.value=""; reviewText.value="";
   renderReviews();
 }
-
 renderReviews();
 
 // === ANIMATION ON SCROLL ===
@@ -256,5 +252,6 @@ window.addEventListener("scroll",()=>{
   });
 });
 </script>
+
 </body>
 </html>
