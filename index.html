@@ -8,150 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin:0; padding:0; }
 
 body {
-    margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background: #0f0f0f;
-    color: #fff;
-}
-
-/* HEADER */
-header {
-    height: 100vh;
-    background: linear-gradient(135deg, #ff512f, #dd2476);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-}
-
-header h1 {
-    font-size: 3.5em;
-    margin-bottom: 10px;
-}
-
-header p {
-    font-size: 1.3em;
-    opacity: 0.95;
-}
-
-/* NAV */
-nav {
-    position: sticky;
-    top: 0;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    z-index: 100;
-}
-
-nav a {
-    color: #fff;
-    padding: 15px 22px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    background: #ff512f;
-}
-
-/* SECTIONS */
-section {
-    padding: 80px 20px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.4em;
-    color: #ff512f;
-}
-
-/* ABOUT */
-#about p {
-    font-size: 1.15em;
-    line-height: 1.7;
-    text-align: center;
-}
-
-/* PORTFOLIO */
-.portfolio {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-.card {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.card img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    transition: 0.5s;
-}
-
-.card:hover img {
-    transform: scale(1.1);
-}
-
-.card span {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 12px;
-    background: rgba(0,0,0,0.7);
-    text-align: center;
-}
-
-/* PRICES */
-.price {
-    background: #1b1b1b;
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-}
-
-/* REVIEWS */
-.review {
-    background: #1b1b1b;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 15px;
-}
-
-/* CONTACTS */
-#contacts p {
-    text-align: center;
-    font-size: 1.1em;
-}
-
-/* SOCIALS */
-.socials {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.socials img {
-    width: 42px;
-    transition: 0.3s;
-}
-
-.socials img:hover {
-    transform: scale(1.2);
+    scroll-behavior: smooth;
 }
 
 /* BUTTONS */
@@ -166,73 +27,110 @@ h2 {
     z-index: 200;
 }
 
-#musicBtn {
-    left: 20px;
-    background: #222;
-    color: #fff;
-}
+#musicBtn { left:20px; background:#222; color:#fff; }
+#adminBtn { right:20px; background:#ff512f; color:#fff; }
 
-#adminBtn {
-    right: 20px;
-    background: #ff512f;
-    color: #fff;
+/* HEADER */
+header {
+    height: 100vh;
+    background: linear-gradient(135deg,#ff512f,#dd2476);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:#fff;
+    padding:20px;
 }
+header h1 { font-size:3.5em; margin-bottom:10px; }
+header p { font-size:1.3em; opacity:0.9; }
 
-/* ADMIN */
-#upload {
-    display: none;
-    margin-top: 30px;
+/* NAV */
+nav {
+    position: sticky;
+    top:0;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    z-index:100;
 }
+nav a {
+    color:#fff;
+    padding:15px 22px;
+    text-decoration:none;
+    transition:.3s;
+}
+nav a:hover { background:#ff512f; }
 
-/* FORM */
-#reviewForm input, #reviewForm textarea {
-    padding: 8px;
-    width: 250px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    border: none;
+/* SECTIONS */
+section {
+    padding:80px 20px;
+    max-width:1100px;
+    margin:auto;
+    transition: all .6s ease;
+    opacity:0;
+    transform: translateY(50px);
 }
+section.visible { opacity:1; transform: translateY(0); }
+h2 { text-align:center; margin-bottom:50px; font-size:2.4em; color:#ff512f; }
 
-#reviewForm button {
-    padding: 10px 15px;
-    background: #ff512f;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-}
+/* О СЕБЕ */
+#about { background: linear-gradient(120deg,#ffe259,#ffa751); color:#000; border-radius:15px; }
+#about p { font-size:1.2em; text-align:center; line-height:1.7; }
+
+/* PORTFOLIO */
+#portfolio { background:#111; color:#fff; border-radius:15px; }
+.portfolio { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
+.card { position:relative; border-radius:15px; overflow:hidden; }
+.card img { width:100%; height:320px; object-fit:cover; transition:.5s; }
+.card:hover img { transform:scale(1.1); }
+.card span { position:absolute; bottom:0; left:0; right:0; padding:12px; background:rgba(0,0,0,0.7); text-align:center; }
+
+/* PRICES */
+#prices { background: #1b1b1b; color:#fff; border-radius:15px; }
+.price { padding:25px; margin-bottom:20px; background:#2b2b2b; border-radius:15px; text-align:center; }
+.price h3 { color:#ff512f; margin-bottom:8px; }
+
+/* REVIEWS */
+#reviews { background: linear-gradient(120deg,#00c6ff,#0072ff); color:#fff; border-radius:15px; }
+.review { background:rgba(0,0,0,0.3); padding:20px; border-radius:15px; margin-bottom:15px; }
+#reviewForm { margin-top:30px; text-align:center; }
+#reviewForm input, #reviewForm textarea { padding:8px; width:250px; margin-bottom:8px; border-radius:5px; border:none; }
+#reviewForm button { padding:10px 15px; background:#ff512f; color:#fff; border:none; border-radius:20px; cursor:pointer; }
+
+/* CONTACTS */
+#contacts { background:#f0f0f0; color:#000; border-radius:15px; }
+#contacts p { text-align:center; font-size:1.1em; margin-bottom:10px; }
+.socials { display:flex; justify-content:center; gap:20px; margin-top:20px; }
+.socials img { width:42px; transition:.3s; }
+.socials img:hover { transform:scale(1.2); }
 
 /* FOOTER */
-footer {
-    background: #000;
-    text-align: center;
-    padding: 30px;
-    margin-top: 60px;
-}
+footer { background:#000; text-align:center; padding:30px; margin-top:60px; color:#fff; }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Музыка -->
+<!-- МУЗЫКА -->
 <audio id="bgMusic" loop>
-    <source src="https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3" type="audio/mp3">
+  <source src="music.mp3" type="audio/mp3">
 </audio>
 
 <button id="musicBtn">🎵 Включить музыку</button>
 <button id="adminBtn">🔐 Админка</button>
 
 <header>
-    <h1>Леус Андрей</h1>
-    <p>18 лет опыта • Экшн-фотография • Взрывы — мой стиль</p>
+<h1>Леус Андрей</h1>
+<p>18 лет опыта • Экшн-фотография • Взрывы — мой стиль</p>
 </header>
 
 <nav>
-    <a href="#about">Обо мне</a>
-    <a href="#portfolio">Портфолио</a>
-    <a href="#prices">Цены</a>
-    <a href="#reviews">Отзывы</a>
-    <a href="#contacts">Контакты</a>
+<a href="#about">Обо мне</a>
+<a href="#portfolio">Портфолио</a>
+<a href="#prices">Цены</a>
+<a href="#reviews">Отзывы</a>
+<a href="#contacts">Контакты</a>
 </nav>
 
 <section id="about">
@@ -248,56 +146,34 @@ footer {
 
 <section id="portfolio">
 <h2>Портфолио</h2>
-
 <div class="portfolio">
-    <div class="card">
-        <img id="photo1" src="action1.jpg">
-        <span>Андрей Анапа 2007</span>
-    </div>
-    <div class="card">
-        <img id="photo2" src="action2.jpg">
-        <span>Андрей Адлер 2010</span>
-    </div>
+  <div class="card"><img id="photo1" src="action1.jpg"><span>Андрей Анапа 2007</span></div>
+  <div class="card"><img id="photo2" src="action2.jpg"><span>Андрей Адлер 2010</span></div>
 </div>
-
 <input type="file" id="upload" accept="image/*">
 </section>
 
 <section id="prices">
 <h2>Прайс-лист</h2>
-<div class="price">
-    <h3>Экшн-съёмка</h3>
-    <p>от 30 000 тенге — взрывы, спецэффекты, обработка</p>
-</div>
-<div class="price">
-    <h3>Индивидуальная съёмка</h3>
-    <p>от 12 000 доляров — авторский стиль</p>
-</div>
+<div class="price"><h3>Экшн-съёмка</h3><p>от 30 000 тенге — взрывы, спецэффекты, обработка</p></div>
+<div class="price"><h3>Индивидуальная съёмка</h3><p>от 12 000 доляров — авторский стиль</p></div>
 </section>
 
 <section id="reviews">
 <h2>Отзывы</h2>
+<div id="reviewList"></div>
 
-<div id="reviewList">
-    <div class="review">
-      <strong>Игорь</strong>
-      <p>Это не просто фото — это кино. Взрывы выглядят нереально.</p>
-    </div>
+<div id="reviewForm">
+<input type="text" id="reviewName" placeholder="Ваше имя"><br>
+<textarea id="reviewText" placeholder="Ваш отзыв" rows="3"></textarea><br>
+<button id="submitReview">Отправить отзыв</button>
 </div>
-
-<div id="reviewForm" style="text-align:center; margin-top:30px;">
-    <input type="text" id="reviewName" placeholder="Ваше имя"><br>
-    <textarea id="reviewText" placeholder="Ваш отзыв" rows="3"></textarea><br>
-    <button id="submitReview">Отправить отзыв</button>
-</div>
-
 </section>
 
 <section id="contacts">
 <h2>Контакты</h2>
 <p>Телефон: +7 932 099-90-55</p>
 <p>Email: deniskaklim6@gmail.com</p>
-
 <div class="socials">
 <a href="https://t.me/oblomoff12345" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"></a>
 <a href="https://vk.com/uglykiddo" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145813.png"></a>
@@ -313,74 +189,72 @@ footer {
 // === MUSIC ===
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
-
 musicBtn.onclick = () => {
-    if (music.paused) {
-        music.volume = 0.25;
-        music.play();
-        musicBtn.textContent = "🔇 Выключить музыку";
-    } else {
-        music.pause();
-        musicBtn.textContent = "🎵 Включить музыку";
-    }
+  if(music.paused){music.volume=0.25; music.play(); musicBtn.textContent="🔇 Выключить музыку";}
+  else{music.pause(); musicBtn.textContent="🎵 Включить музыку";}
 };
 
 // === ADMIN ===
 const PASSWORD = "admin123";
 const upload = document.getElementById("upload");
 const photo1 = document.getElementById("photo1");
-
-document.getElementById("adminBtn").onclick = () => {
-    if (prompt("Введите пароль администратора") === PASSWORD) {
-        upload.style.display = "block";
-        alert("Админ-режим включён");
-    }
+document.getElementById("adminBtn").onclick = ()=>{
+  if(prompt("Введите пароль администратора")===PASSWORD){upload.style.display="block"; alert("Админ-режим включён");}
 };
-
-upload.onchange = e => {
-    const reader = new FileReader();
-    reader.onload = () => {
-        photo1.src = reader.result;
-        localStorage.photo1 = reader.result;
-    };
-    reader.readAsDataURL(e.target.files[0]);
+upload.onchange = e=>{
+  const reader=new FileReader();
+  reader.onload=()=>{photo1.src=reader.result; localStorage.photo1=reader.result;}
+  reader.readAsDataURL(e.target.files[0]);
 };
-
-if (localStorage.photo1) {
-    photo1.src = localStorage.photo1;
-}
+if(localStorage.photo1){photo1.src=localStorage.photo1;}
 
 // === REVIEWS ===
-const reviewList = document.getElementById("reviewList");
-const reviewName = document.getElementById("reviewName");
-const reviewText = document.getElementById("reviewText");
-const submitReview = document.getElementById("submitReview");
-
-function renderReviews() {
-    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
-    reviewList.innerHTML = '';
-    reviews.forEach(r => {
-        const div = document.createElement("div");
-        div.className = "review";
-        div.innerHTML = `<strong>${r.name}</strong><p>${r.text}</p>`;
-        reviewList.appendChild(div);
-    });
+if(!localStorage.getItem("reviews")){
+  const defaultReviews=[
+    {name:"София",text:"Леус сделал потрясающие фото с взрывами, это супер!"},
+    {name:"Алексей",text:"Очень креативный и быстрый, рекомендую!"},
+    {name:"Марина",text:"Фотографии выглядят как кадры из фильма, шикарно!"}
+  ];
+  localStorage.setItem("reviews",JSON.stringify(defaultReviews));
 }
 
-submitReview.onclick = () => {
-    const name = reviewName.value.trim();
-    const text = reviewText.value.trim();
-    if (!name || !text) return alert("Введите имя и отзыв!");
-    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
-    reviews.push({name, text});
-    localStorage.setItem("reviews", JSON.stringify(reviews));
-    reviewName.value = "";
-    reviewText.value = "";
-    renderReviews();
+const reviewList=document.getElementById("reviewList");
+const reviewName=document.getElementById("reviewName");
+const reviewText=document.getElementById("reviewText");
+const submitReview=document.getElementById("submitReview");
+
+function renderReviews(){
+  const reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+  reviewList.innerHTML="";
+  reviews.forEach(r=>{
+    const div=document.createElement("div");
+    div.className="review";
+    div.innerHTML=`<strong>${r.name}</strong><p>${r.text}</p>`;
+    reviewList.appendChild(div);
+  });
+}
+
+submitReview.onclick=()=>{
+  const name=reviewName.value.trim();
+  const text=reviewText.value.trim();
+  if(!name||!text)return alert("Введите имя и отзыв!");
+  const reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+  reviews.push({name,text});
+  localStorage.setItem("reviews",JSON.stringify(reviews));
+  reviewName.value=""; reviewText.value="";
+  renderReviews();
 }
 
 renderReviews();
-</script>
 
+// === ANIMATION ON SCROLL ===
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+  sections.forEach(sec=>{
+    const rect=sec.getBoundingClientRect();
+    if(rect.top<window.innerHeight-100){sec.classList.add("visible");}
+  });
+});
+</script>
 </body>
 </html>
