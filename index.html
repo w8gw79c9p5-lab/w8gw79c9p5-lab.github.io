@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Фотограф Леус Андрей</title>
 
-<!-- ===== PWA MANIFEST (INLINE) ===== -->
+<!-- PWA -->
 <link rel="manifest" href="data:application/json,{
   &quot;name&quot;:&quot;Леус Андрей — Экшн-фотограф&quot;,
   &quot;short_name&quot;:&quot;LeusPhoto&quot;,
@@ -27,14 +27,45 @@ body {
     color: #fff;
 }
 
-/* HEADER */
+/* HEADER SLIDER */
 header {
     height: 100vh;
-    background: linear-gradient(135deg, #ff512f, #dd2476);
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(0,0,0,0.55);
+    height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 3.5em;
+}
+
+header p {
+    font-size: 1.4em;
 }
 
 /* NAV */
@@ -53,6 +84,10 @@ nav a {
     text-decoration: none;
 }
 
+nav a:hover {
+    background: #ff512f;
+}
+
 /* SECTIONS */
 section {
     padding: 80px 20px;
@@ -67,11 +102,24 @@ h2 {
     color: #ff512f;
 }
 
+/* ABOUT */
+#about p {
+    font-size: 1.2em;
+    line-height: 1.7;
+    text-align: center;
+}
+
 /* PORTFOLIO */
 .portfolio {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
 }
 
 .card img {
@@ -80,7 +128,27 @@ h2 {
     object-fit: cover;
 }
 
-/* SOCIALS */
+/* PRICES */
+.price {
+    background: #1b1b1b;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.price h3 {
+    color: #ff512f;
+}
+
+/* REVIEWS */
+.review {
+    background: #1b1b1b;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* CONTACTS */
 .socials {
     display: flex;
     justify-content: center;
@@ -96,6 +164,7 @@ footer {
     background: #000;
     text-align: center;
     padding: 30px;
+    margin-top: 60px;
 }
 
 /* BUTTONS */
@@ -125,50 +194,76 @@ footer {
 
 <body>
 
-<!-- 🎵 ФОНОВАЯ МУЗЫКА -->
+<!-- 🎵 Музыка -->
 <audio id="bgMusic" loop>
-  <source src="https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3" type="audio/mpeg">
+  <source src="https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3">
 </audio>
 
 <button id="musicBtn">🔈 Музыка</button>
 <button id="adminBtn">🔐 Админка</button>
 
 <header>
-  <div>
-    <h1 id="title">Леус Андрей</h1>
-    <p id="subtitle">18 лет опыта • Экшн-фотография • Взрывы - мой стиль</p>
-  </div>
+    <div class="slide active" style="background-image:url('action1.jpg')"></div>
+    <div class="slide" style="background-image:url('action2.jpg')"></div>
+
+    <div class="header-content">
+        <h1>Леус Андрей</h1>
+        <p>18 лет опыта • Экшн-фотография • Взрывы - мой стиль</p>
+    </div>
 </header>
 
 <nav>
-  <a href="#about">Обо мне</a>
-  <a href="#portfolio">Портфолио</a>
-  <a href="#contacts">Контакты</a>
+    <a href="#about">Обо мне</a>
+    <a href="#portfolio">Портфолио</a>
+    <a href="#prices">Цены</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#contacts">Контакты</a>
 </nav>
 
 <section id="about">
 <h2>О фотографе</h2>
-<p id="aboutText">
+<p>
 Меня зовут Леус Андрей. Я профессиональный фотограф с 18-летним опытом.
-Моя специализация — экшн-фотография.
+Моя специализация - экшн-фотография, динамика, адреналин и кадры
+на фоне взрывов. Я создаю изображения, которые невозможно забыть.
 </p>
 </section>
 
 <section id="portfolio">
 <h2>Портфолио</h2>
 <div class="portfolio">
-  <div class="card"><img id="img1" src="action1.jpg"></div>
-  <div class="card"><img id="img2" src="action2.jpg"></div>
+<div class="card"><img id="img1" src="action1.jpg"></div>
+<div class="card"><img id="img2" src="action2.jpg"></div>
 </div>
 <input type="file" id="upload" accept="image/*" style="display:none">
+</section>
+
+<section id="prices">
+<h2>Прайс-лист</h2>
+<div class="price">
+<h3>Экшн-съёмка</h3>
+<p>от 30 000 тенге</p>
+</div>
+<div class="price">
+<h3>Индивидуальная съёмка</h3>
+<p>от 12 000 доляров</p>
+</div>
+</section>
+
+<section id="reviews">
+<h2>Отзывы</h2>
+<div class="review">
+<strong>Игорь</strong>
+<p>Это не просто фото — это кино.</p>
+</div>
 </section>
 
 <section id="contacts">
 <h2>Контакты</h2>
 <div class="socials">
-  <a href="https://t.me/oblomoff12345"><img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"></a>
-  <a href="https://vk.com/uglykiddo"><img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/145/145813.png"></a>
-  <a href="https://www.tiktok.com/@corner_lie"><img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/3046/3046128.png"></a>
+<a href="https://t.me/oblomoff12345"><img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"></a>
+<a href="https://vk.com/uglykiddo"><img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/145/145813.png"></a>
+<a href="https://www.tiktok.com/@corner_lie"><img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/3046/3046128.png"></a>
 </div>
 </section>
 
@@ -177,75 +272,58 @@ footer {
 </footer>
 
 <script>
-/* ===== МУЗЫКА ===== */
+/* SLIDER */
+let slides = document.querySelectorAll('.slide');
+let i = 0;
+setInterval(() => {
+  slides[i].classList.remove('active');
+  i = (i + 1) % slides.length;
+  slides[i].classList.add('active');
+}, 4000);
+
+/* MUSIC */
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
-
-if (localStorage.music === "on") {
-  music.volume = 0.2;
-  music.play();
-  musicBtn.textContent = "🔊 Музыка";
-}
-
 musicBtn.onclick = () => {
   if (music.paused) {
     music.volume = 0.2;
     music.play();
-    localStorage.music = "on";
     musicBtn.textContent = "🔊 Музыка";
   } else {
     music.pause();
-    localStorage.music = "off";
     musicBtn.textContent = "🔈 Музыка";
   }
 };
 
-/* ===== АДМИНКА ===== */
+/* ADMIN */
 const PASSWORD = "admin123";
-const adminBtn = document.getElementById("adminBtn");
-const upload = document.getElementById("upload");
-
-adminBtn.onclick = () => {
-  const pass = prompt("Пароль администратора:");
-  if (pass === PASSWORD) {
-    alert("Админка включена");
-    upload.style.display = "block";
+document.getElementById("adminBtn").onclick = () => {
+  if (prompt("Пароль администратора") === PASSWORD) {
+    document.getElementById("upload").style.display = "block";
   }
 };
 
-upload.onchange = e => {
-  const file = e.target.files[0];
-  const reader = new FileReader();
-  reader.onload = () => {
-    localStorage.photo1 = reader.result;
-    document.getElementById("img1").src = reader.result;
+document.getElementById("upload").onchange = e => {
+  const r = new FileReader();
+  r.onload = () => {
+    document.getElementById("img1").src = r.result;
+    localStorage.photo = r.result;
   };
-  reader.readAsDataURL(file);
+  r.readAsDataURL(e.target.files[0]);
 };
 
-if (localStorage.photo1) {
-  document.getElementById("img1").src = localStorage.photo1;
+if (localStorage.photo) {
+  document.getElementById("img1").src = localStorage.photo;
 }
 
-/* ===== PWA SERVICE WORKER (INLINE) ===== */
+/* PWA */
 if ('serviceWorker' in navigator) {
-  const swCode = `
-    self.addEventListener('install', e => {
-      e.waitUntil(
-        caches.open('site-cache').then(cache =>
-          cache.addAll(['./'])
-        )
-      );
-    });
+  const sw = new Blob([`
     self.addEventListener('fetch', e => {
-      e.respondWith(
-        caches.match(e.request).then(res => res || fetch(e.request))
-      );
+      e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
     });
-  `;
-  const blob = new Blob([swCode], {type: 'text/javascript'});
-  const swUrl = URL.createObjectURL(blob);
-  navigator.serviceWorker.register(swUrl);
+  `], {type:'text/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(sw));
 }
 </script>
 
