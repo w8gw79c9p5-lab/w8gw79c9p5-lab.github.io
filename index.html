@@ -126,8 +126,9 @@ h2 {
 /* REVIEWS */
 .review {
     background: #1b1b1b;
-    padding: 25px;
+    padding: 20px;
     border-radius: 15px;
+    margin-bottom: 15px;
 }
 
 /* CONTACTS */
@@ -183,6 +184,24 @@ h2 {
     margin-top: 30px;
 }
 
+/* FORM */
+#reviewForm input, #reviewForm textarea {
+    padding: 8px;
+    width: 250px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+#reviewForm button {
+    padding: 10px 15px;
+    background: #ff512f;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
 /* FOOTER */
 footer {
     background: #000;
@@ -195,9 +214,9 @@ footer {
 
 <body>
 
-<!-- 🎵 MUSIC -->
+<!-- 🎵 Музыка -->
 <audio id="bgMusic" loop>
-    <source src="https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3">
+    <source src="https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3" type="audio/mp3">
 </audio>
 
 <button id="musicBtn">🎵 Включить музыку</button>
@@ -258,10 +277,20 @@ footer {
 
 <section id="reviews">
 <h2>Отзывы</h2>
-<div class="review">
-<strong>Игорь</strong>
-<p>Это не просто фото — это кино. Взрывы выглядят нереально.</p>
+
+<div id="reviewList">
+    <div class="review">
+      <strong>Игорь</strong>
+      <p>Это не просто фото — это кино. Взрывы выглядят нереально.</p>
+    </div>
 </div>
+
+<div id="reviewForm" style="text-align:center; margin-top:30px;">
+    <input type="text" id="reviewName" placeholder="Ваше имя"><br>
+    <textarea id="reviewText" placeholder="Ваш отзыв" rows="3"></textarea><br>
+    <button id="submitReview">Отправить отзыв</button>
+</div>
+
 </section>
 
 <section id="contacts">
@@ -281,7 +310,7 @@ footer {
 </footer>
 
 <script>
-/* MUSIC */
+// === MUSIC ===
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
@@ -296,9 +325,10 @@ musicBtn.onclick = () => {
     }
 };
 
-/* ADMIN */
+// === ADMIN ===
 const PASSWORD = "admin123";
 const upload = document.getElementById("upload");
+const photo1 = document.getElementById("photo1");
 
 document.getElementById("adminBtn").onclick = () => {
     if (prompt("Введите пароль администратора") === PASSWORD) {
@@ -310,15 +340,46 @@ document.getElementById("adminBtn").onclick = () => {
 upload.onchange = e => {
     const reader = new FileReader();
     reader.onload = () => {
-        document.getElementById("photo1").src = reader.result;
+        photo1.src = reader.result;
         localStorage.photo1 = reader.result;
     };
     reader.readAsDataURL(e.target.files[0]);
 };
 
 if (localStorage.photo1) {
-    document.getElementById("photo1").src = localStorage.photo1;
+    photo1.src = localStorage.photo1;
 }
+
+// === REVIEWS ===
+const reviewList = document.getElementById("reviewList");
+const reviewName = document.getElementById("reviewName");
+const reviewText = document.getElementById("reviewText");
+const submitReview = document.getElementById("submitReview");
+
+function renderReviews() {
+    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+    reviewList.innerHTML = '';
+    reviews.forEach(r => {
+        const div = document.createElement("div");
+        div.className = "review";
+        div.innerHTML = `<strong>${r.name}</strong><p>${r.text}</p>`;
+        reviewList.appendChild(div);
+    });
+}
+
+submitReview.onclick = () => {
+    const name = reviewName.value.trim();
+    const text = reviewText.value.trim();
+    if (!name || !text) return alert("Введите имя и отзыв!");
+    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+    reviews.push({name, text});
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+    reviewName.value = "";
+    reviewText.value = "";
+    renderReviews();
+}
+
+renderReviews();
 </script>
 
 </body>
