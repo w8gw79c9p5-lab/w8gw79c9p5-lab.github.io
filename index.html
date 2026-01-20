@@ -52,21 +52,7 @@ body {
   color:#222;
   scroll-behavior:smooth;
 }
-
-/* BUTTONS */
-#musicBtn, #adminBtn {
-  position:fixed;
-  bottom:20px;
-  padding:12px 18px;
-  border-radius:30px;
-  border:none;
-  font-size:14px;
-  cursor:pointer;
-  z-index:200;
-}
-#musicBtn { left:20px; background:#222; color:#fff; }
-#adminBtn { right:20px; background:#ff512f; color:#fff; }
-
+  
 /* HEADER */
 header {
   height:100vh;
@@ -149,13 +135,6 @@ footer { background:#fff; text-align:center; padding:20px; margin-top:40px; colo
 
 <body>
 
-<!-- МУЗЫКА -->
-<audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mp3">
-</audio>
-<button id="musicBtn">🎵 Включить музыку</button>
-<button id="adminBtn">🔐 Админка</button>
-
 <header>
   <h1>Леус Андрей</h1>
   <p>18 лет опыта • Экшн-фотография • Взрывы — мой стиль</p>
@@ -236,27 +215,6 @@ footer { background:#fff; text-align:center; padding:20px; margin-top:40px; colo
 </footer>
 
 <script>
-// === MUSIC ===
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
-musicBtn.onclick = ()=>{
-  if(music.paused){music.volume=0.25; music.play(); musicBtn.textContent="🔇 Выключить музыку";}
-  else{music.pause(); musicBtn.textContent="🎵 Включить музыку";}
-};
-
-// === ADMIN ===
-const PASSWORD = "admin123";
-const upload = document.getElementById("upload");
-const photo1 = document.getElementById("photo1");
-document.getElementById("adminBtn").onclick = ()=>{
-  if(prompt("Введите пароль администратора")===PASSWORD){upload.style.display="block"; alert("Админ-режим включён");}
-};
-upload.onchange = e=>{
-  const reader=new FileReader();
-  reader.onload=()=>{photo1.src=reader.result; localStorage.photo1=reader.result;}
-  reader.readAsDataURL(e.target.files[0]);
-};
-if(localStorage.photo1){photo1.src=localStorage.photo1;}
 
 // === REVIEWS ===
 if(!localStorage.getItem("reviews")){
