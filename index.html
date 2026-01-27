@@ -85,20 +85,28 @@ nav a {
 
 /* SECTIONS */
 section {
-  padding:60px 20px;
-  max-width:1000px;
-  margin:auto 0 40px 0;
-  border-radius:12px;
-  background:#1c1c1c;
-  box-shadow:0 4px 20px rgba(0,0,0,0.5);
-  opacity:0;
-  transform:translateY(50px);
-  transition:all .6s ease;
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto 40px auto;   /* 🔥 центрируем */
+  border-radius: 12px;
+  background: #1c1c1c;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all .6s ease;
 }
 
-section.visible { opacity:1; transform:translateY(0); }
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-h2 { text-align:center; margin-bottom:40px; font-size:2.2em; color:#ff512f; }
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2em;
+  color: #ff512f;
+}
 
 /* ABOUT */
 #about p { font-size:1.15em; line-height:1.7; text-align:center; color:#ddd; }
